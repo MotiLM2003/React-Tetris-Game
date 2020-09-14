@@ -110,21 +110,19 @@ const Tetris = () => {
       onKeyUp={(e) => keyUp(e)}
     >
       <StyledTetris>
-        <div>
-          <Stage stage={stage} />
-          <aside>
-            {gameOver ? (
-              <Display gameOver={gameOver} text='GameOver' />
-            ) : (
-              <div>
-                <Display text={`Score: ${score}`} />
-                <Display text={`Rows: ${rows}`} />
-                <Display text={`Level: ${level}`} />
-              </div>
-            )}
-            <StartButton callBack={startGame} />
-          </aside>
-        </div>
+        <Stage stage={stage} />
+        <aside className='side-container'>
+          {gameOver ? (
+            <Display gameOver={gameOver} text='GameOver' />
+          ) : (
+            <div>
+              <Display text={`Score: ${score}`} />
+              <Display text={`Rows: ${rows}`} />
+              <Display text={`Level: ${level}`} />
+            </div>
+          )}
+          <StartButton callBack={startGame} />
+        </aside>
       </StyledTetris>
     </StyledTetrisWrapper>
   );
