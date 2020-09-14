@@ -17,7 +17,7 @@ import { StyledTetris, StyledTetrisWrapper } from './styles/StyledTetris';
 const Tetris = () => {
   const [dropTime, setDropTime] = useState(null);
   const [gameOver, setGameOver] = useState(false);
-  const [player, updatePlayerPos, resetPlayer] = usePlayer();
+  const [player, updatePlayerPos, resetPlayer, playerRotate] = usePlayer();
   const [stage, setStage] = useStage(player, resetPlayer);
 
   const movePlayer = (dir) => {
@@ -64,6 +64,10 @@ const Tetris = () => {
         }
         case 40: {
           dropPlayer();
+          break;
+        }
+        case 38: {
+          playerRotate(stage, 1);
         }
       }
     }
