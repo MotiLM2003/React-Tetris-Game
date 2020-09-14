@@ -8,6 +8,7 @@ import Stage from './Stage';
 import StartButton from './StartButton';
 
 // custom hooks
+import { useInterval } from '../hooks/useInterval';
 import { usePlayer } from '../hooks/usePlayer';
 import { useStage } from '../hooks/useStage';
 
