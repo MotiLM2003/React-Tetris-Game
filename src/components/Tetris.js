@@ -105,6 +105,7 @@ const Tetris = () => {
   return (
     <StyledTetrisWrapper
       role='button'
+      id='main-area'
       tabIndex='0'
       onKeyDown={(e) => move(e)}
       onKeyUp={(e) => keyUp(e)}
