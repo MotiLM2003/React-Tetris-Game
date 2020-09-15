@@ -13,7 +13,7 @@ export const checkCollision = (player, stage, { x: moveX, y: moveY }) => {
     for (let x = 0; x < player.tetromino[y].length; x += 1) {
       // check that we're on a grid cell
       if (player.tetromino[y][x] !== 0) {
-        // check if we're insde the game height
+        // check if we're inside the game height
         // check that in the area width
         if (
           !stage[y + player.pos.y + moveY] ||

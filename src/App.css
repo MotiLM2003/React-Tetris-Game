@@ -9,7 +9,17 @@ html {
 body {
 }
 
+.bg-blur {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+  z-index: 1;
+}
+
 .side-container {
+  /* display: none; */
   background-color: rgba(255, 255, 255, 0.5);
   margin: 0 0 0 0;
   height: 40rem;
@@ -21,6 +31,14 @@ body {
 .glass {
   box-sizing: border-box;
   width: 90%;
-  padding: 0.5rem;
-  margin: 2rem auto;
+  border-radius: 1rem;
+  padding: 1rem;
+  display: block;
+  margin: 1rem auto;
+  outline: none;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+  cursor: pointer;
+  font-family: Pixel, Arial, Helvetica, sans-serif;
 }
