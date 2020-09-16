@@ -67,6 +67,7 @@ const Tetris = () => {
       if (player.pos.y < 1) {
         setGameOver(true);
         setDropTime(null);
+
         setLoop(false);
         playSound('game-over.mp3');
       }

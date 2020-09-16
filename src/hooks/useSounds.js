@@ -16,7 +16,7 @@ export const useSounds = () => {
   }, [audio]);
 
   const playSound = (url, isLoop = false) => {
-    setAudio(new Audio(`http://localhost:3000/sounds/${url}`));
+    setAudio(new Audio(`/sounds/${url}`));
   };
 
   const stopSound = () => {
