@@ -1,21 +1,34 @@
-import { useEffect, useState } from 'react';
+import { isValidElement, useEffect, useState } from 'react';
 
 export const useSounds = () => {
   const [audio, setAudio] = useState(null);
   const [loop, setLoop] = useState(false);
 
   useEffect(() => {
-    console.log(audio);
     if (audio !== null) {
-      audio.loop = loop;
       audio.play();
+      audio.addEventListener('ended', test);
     }
     return () => {
-      //  audio.removeEventListener('ended', setPlaying(false));
+      if (audio != null) {
+        audio.removeEventListener('ended', test);
+        console.log('clean up');
+      }
     };
   }, [audio]);
 
-  const playSound = (url) => {
+  useEffect(() => {
+    if (audio != null) {
+      console.log('setting loop');
+      audio.loop = loop;
+      console.log(audio.loop);
+    }
+  }, [loop]);
+
+  const test = () => {};
+
+  const playSound = (url, isLoop) => {
+    setLoop(isLoop);
     setAudio(new Audio(`/sounds/${url}`));
   };
 
@@ -25,5 +38,5 @@ export const useSounds = () => {
     }
   };
 
-  return [playSound, stopSound, setLoop];
+  return [playSound, stopSound];
 };
