@@ -5,8 +5,8 @@ export const useSounds = () => {
   const [loop, setLoop] = useState(false);
 
   useEffect(() => {
+    console.log(audio);
     if (audio !== null) {
-      console.log(audio);
       audio.loop = loop;
       audio.play();
     }
@@ -15,7 +15,7 @@ export const useSounds = () => {
     };
   }, [audio]);
 
-  const playSound = (url, isLoop = false) => {
+  const playSound = (url) => {
     setAudio(new Audio(`/sounds/${url}`));
   };
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 // helpers import
 import { createStage, checkCollision } from '../gameHelpers';
-// components
+// compongts
 import Display from './Display';
 import Stage from './Stage';
 import StartButton from './StartButton';
@@ -69,7 +69,9 @@ const Tetris = () => {
         setDropTime(null);
 
         setLoop(false);
+        console.log('game over sound');
         playSound('game-over.mp3');
+        return;
       }
       updatePlayerPos({ x: 0, y: 0, collided: true });
       setLoop(false);

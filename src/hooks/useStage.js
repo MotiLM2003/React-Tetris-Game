@@ -14,7 +14,7 @@ export const useStage = (player, resetPlayer) => {
         if (row.findIndex((cell) => cell[0] === 0) === -1) {
           setRowsCleared((prev) => prev + 1);
           setLoop(false);
-          playSound('http://localhost:3000/sounds/rows_cleared.mp3');
+          playSound('rows_cleared.mp3');
           acc.unshift(new Array(newStage[0].length).fill([0, 'clear']));
           return acc;
         }
