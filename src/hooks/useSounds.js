@@ -19,9 +19,7 @@ export const useSounds = () => {
 
   useEffect(() => {
     if (audio != null) {
-      console.log('setting loop');
       audio.loop = loop;
-      console.log(audio.loop);
     }
   }, [loop]);
 

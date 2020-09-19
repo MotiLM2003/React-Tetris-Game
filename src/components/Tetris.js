@@ -29,6 +29,7 @@ const Tetris = () => {
   );
 
   useEffect(() => {
+    document.body.click();
     playSound('title.mp3', true);
   }, []);
 
