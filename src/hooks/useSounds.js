@@ -30,9 +30,12 @@ export const useSounds = () => {
 
   const test = () => {};
 
-  const playSound = (audio, isLoop) => {
+  const playSound = (audio, isLoop, volume = 1) => {
+    console.log(volume);
     setCurrentAudio(audio);
     setLoop(isLoop);
+    if (!gameAudio[audio]) return;
+    gameAudio[audio].volume = volume;
     gameAudio[audio].play();
   };
 
@@ -44,7 +47,15 @@ export const useSounds = () => {
 
   const setVolume = (volume) => {
     if (currentAudio !== null) {
-      gameAudio[currentAudio].volume = volume;
+      let currentValue = gameAudio[currentAudio].volume;
+      const reduceValueInterval = setInterval(() => {
+        currentValue -= 0.1;
+        gameAudio[currentAudio].volume = currentValue;
+
+        if (currentValue <= volume) {
+          clearInterval(reduceValueInterval);
+        }
+      }, 200);
     }
   };
 

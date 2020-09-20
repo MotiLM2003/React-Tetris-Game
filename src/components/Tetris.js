@@ -23,14 +23,16 @@ const Tetris = () => {
   const [gameOver, setGameOver] = useState(false);
   const [player, updatePlayerPos, resetPlayer, playerRotate] = usePlayer();
   const [stage, setStage, rowsCleared] = useStage(player, resetPlayer);
-
+  //const [isQuickDrop, setIsQuickDrop] = useState(false);
   const [score, setScore, rows, setRows, level, setLevel] = useGameStatus(
     rowsCleared
   );
 
+  let isQuickDrop = false;
+
   useEffect(() => {
-    document.body.click();
-    playSound('title', true);
+    document.getElementById('main-area').click();
+    playSound('title', true, 0.4);
   }, []);
 
   const movePlayer = (dir) => {
@@ -61,6 +63,7 @@ const Tetris = () => {
     if (!checkCollision(player, stage, { x: 0, y: 1 })) {
       updatePlayerPos({ x: 0, y: 1, collided: false });
     } else {
+      isQuickDrop = false;
       // check if gameover
       if (player.pos.y < 1) {
         setGameOver(true);
@@ -90,6 +93,7 @@ const Tetris = () => {
   };
 
   const move = ({ keyCode }) => {
+    console.log(keyCode);
     if (!gameOver) {
       switch (keyCode) {
         case 37: {
@@ -107,8 +111,24 @@ const Tetris = () => {
         case 38: {
           playerRotate(stage, 1);
         }
+        case 32: {
+          quickDrop();
+        }
       }
     }
+  };
+
+  const quickDrop = () => {
+    isQuickDrop = true;
+
+    setDropTime(null);
+
+    setTimeout(() => {
+      drop();
+      if (isQuickDrop) {
+        quickDrop();
+      }
+    }, 55);
   };
 
   useInterval(() => {
