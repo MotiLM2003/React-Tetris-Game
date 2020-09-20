@@ -1,40 +1,52 @@
 import { isValidElement, useEffect, useState } from 'react';
 
 export const useSounds = () => {
-  const [audio, setAudio] = useState(null);
   const [loop, setLoop] = useState(false);
+  const [gameAudio] = useState({
+    title: new Audio('/sounds/title.mp3'),
+    drop: new Audio('/sounds/drop.mp3'),
+    clearRow: new Audio('/sounds/rows_cleared.mp3'),
+    gameOVer: new Audio('/sounds/game-over.mp3'),
+  });
+  const [currentAudio, setCurrentAudio] = useState(null);
 
   useEffect(() => {
-    if (audio !== null) {
-      audio.play();
-      audio.addEventListener('ended', test);
-    }
+    console.log('effect');
+    gameAudio[0] = new Audio('/sounds/title.mp3');
+    drop: new Audio('/sounds/drop.mp3');
+
     return () => {
-      if (audio != null) {
-        audio.removeEventListener('ended', test);
-        console.log('clean up');
+      if (currentAudio != null) {
+        // currentAudio.removeEventListener('ended', test);
       }
     };
-  }, [audio]);
+  }, [currentAudio]);
 
   useEffect(() => {
-    if (audio != null) {
-      audio.loop = loop;
+    if (currentAudio != null) {
+      gameAudio[currentAudio].loop = loop;
     }
   }, [loop]);
 
   const test = () => {};
 
-  const playSound = (url, isLoop) => {
+  const playSound = (audio, isLoop) => {
+    setCurrentAudio(audio);
     setLoop(isLoop);
-    setAudio(new Audio(`/sounds/${url}`));
+    gameAudio[audio].play();
   };
 
   const stopSound = () => {
-    if (audio !== null) {
-      audio.pause();
+    if (currentAudio !== null) {
+      currentAudio.pause();
     }
   };
 
-  return [playSound, stopSound];
+  const setVolume = (volume) => {
+    if (currentAudio !== null) {
+      gameAudio[currentAudio].volume = volume;
+    }
+  };
+
+  return [playSound, stopSound, setVolume];
 };

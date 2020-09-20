@@ -18,7 +18,7 @@ import { useSounds } from '../hooks/useSounds';
 import { StyledTetris, StyledTetrisWrapper } from './styles/StyledTetris';
 
 const Tetris = () => {
-  const [playSound, stopSound] = useSounds();
+  const [playSound, stopSound, setVolume] = useSounds();
   const [dropTime, setDropTime] = useState(null);
   const [gameOver, setGameOver] = useState(false);
   const [player, updatePlayerPos, resetPlayer, playerRotate] = usePlayer();
@@ -30,7 +30,7 @@ const Tetris = () => {
 
   useEffect(() => {
     document.body.click();
-    playSound('title.mp3', true);
+    playSound('title', true);
   }, []);
 
   const movePlayer = (dir) => {
@@ -39,7 +39,7 @@ const Tetris = () => {
   };
 
   const startGame = () => {
-    stopSound();
+    setVolume(0.15);
     // reset everything;
     setDropTime(1000);
     setStage(createStage());
@@ -66,11 +66,11 @@ const Tetris = () => {
         setGameOver(true);
         setDropTime(null);
 
-        playSound('game-over.mp3');
+        playSound('gameOVer');
         return;
       }
       updatePlayerPos({ x: 0, y: 0, collided: true });
-      playSound('drop.mp3');
+      playSound('drop');
     }
   };
 
