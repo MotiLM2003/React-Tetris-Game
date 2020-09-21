@@ -28,7 +28,7 @@ const Tetris = () => {
     rowsCleared
   );
 
-  let isQuickDrop = false;
+  const getDropIntervalTime = () => 1000 / level + 200;
 
   useEffect(() => {
     document.getElementById('main-area').click();
@@ -55,25 +55,27 @@ const Tetris = () => {
   const drop = () => {
     // increase level every 10 rows
     if (rows >= level * 10) {
+      playSound('nextLevel');
       setLevel((prev) => prev + 1);
-      setDropTime(1000 / level + 200);
-      playSound('next-level.mp3');
+      setDropTime(getDropIntervalTime());
     }
 
     if (!checkCollision(player, stage, { x: 0, y: 1 })) {
       updatePlayerPos({ x: 0, y: 1, collided: false });
     } else {
-      isQuickDrop = false;
+      playSound('drop');
+      setDropTime(getDropIntervalTime());
+
       // check if gameover
       if (player.pos.y < 1) {
         setGameOver(true);
         setDropTime(null);
 
-        playSound('gameOVer');
+        playSound('gameOver');
         return;
       }
+
       updatePlayerPos({ x: 0, y: 0, collided: true });
-      playSound('drop');
     }
   };
 
@@ -86,14 +88,13 @@ const Tetris = () => {
     if (gameOver) return;
     switch (keyCode) {
       case 40: {
-        setDropTime(1000 / level + 200);
+        setDropTime(getDropIntervalTime());
         break;
       }
     }
   };
 
   const move = ({ keyCode }) => {
-    console.log(keyCode);
     if (!gameOver) {
       switch (keyCode) {
         case 37: {
@@ -110,25 +111,19 @@ const Tetris = () => {
         }
         case 38: {
           playerRotate(stage, 1);
+          break;
         }
         case 32: {
           quickDrop();
+          break;
         }
       }
     }
   };
 
   const quickDrop = () => {
-    isQuickDrop = true;
-
-    setDropTime(null);
-
-    setTimeout(() => {
-      drop();
-      if (isQuickDrop) {
-        quickDrop();
-      }
-    }, 55);
+    // quick drop - setting interval to 0;
+    setDropTime(0);
   };
 
   useInterval(() => {

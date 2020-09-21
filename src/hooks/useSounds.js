@@ -6,22 +6,13 @@ export const useSounds = () => {
     title: new Audio('/sounds/title.mp3'),
     drop: new Audio('/sounds/drop.mp3'),
     clearRow: new Audio('/sounds/rows_cleared.mp3'),
-    gameOVer: new Audio('/sounds/game-over.mp3'),
+    gameOver: new Audio('/sounds/game-over.mp3'),
+    nextLevel: new Audio('/sounds/game-over.mp3'),
   });
   const [currentAudio, setCurrentAudio] = useState(null);
-
   useEffect(() => {
-    console.log('effect');
-    gameAudio[0] = new Audio('/sounds/title.mp3');
-    drop: new Audio('/sounds/drop.mp3');
-
-    return () => {
-      if (currentAudio != null) {
-        // currentAudio.removeEventListener('ended', test);
-      }
-    };
-  }, [currentAudio]);
-
+    gameAudio.preload = true;
+  });
   useEffect(() => {
     if (currentAudio != null) {
       gameAudio[currentAudio].loop = loop;
@@ -31,7 +22,6 @@ export const useSounds = () => {
   const test = () => {};
 
   const playSound = (audio, isLoop, volume = 1) => {
-    console.log(volume);
     setCurrentAudio(audio);
     setLoop(isLoop);
     if (!gameAudio[audio]) return;

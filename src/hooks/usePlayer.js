@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { checkCollision, STAGE_WIDTH } from '../gameHelpers';
 
 import { TETROMINOS, randomTetroMino } from '../tetrominos';
@@ -53,6 +53,7 @@ export const usePlayer = () => {
     }));
   };
 
+  useEffect(() => {}, player.pos.y);
   const resetPlayer = useCallback(() => {
     setPlayer({
       pos: { x: STAGE_WIDTH / 2 - 1, y: 0 },
