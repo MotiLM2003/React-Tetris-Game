@@ -10,9 +10,7 @@ export const useSounds = () => {
     nextLevel: new Audio('/sounds/game-over.mp3'),
   });
   const [currentAudio, setCurrentAudio] = useState(null);
-  useEffect(() => {
-    gameAudio.preload = true;
-  });
+  useEffect(() => {});
   useEffect(() => {
     if (currentAudio != null) {
       gameAudio[currentAudio].loop = loop;
@@ -26,7 +24,9 @@ export const useSounds = () => {
     setLoop(isLoop);
     if (!gameAudio[audio]) return;
     gameAudio[audio].volume = volume;
-    gameAudio[audio].play();
+    const test = gameAudio[audio].play();
+    test.then(() => console.log('promise'));
+    console.log('play');
   };
 
   const stopSound = () => {

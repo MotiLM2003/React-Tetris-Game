@@ -140,7 +140,17 @@ const Tetris = () => {
     >
       <div className='bg-blur'>&nbsp;</div>
       <StyledTetris>
-        <Stage stage={stage} />
+        <div className='tetris-container'>
+          <div className='tetris-header'>header</div>
+          <div className='tetris-columns'>
+            <div>side a</div>
+            <Stage stage={stage} />
+            <div>side b</div>
+          </div>
+          <div className='tetris-footer'>
+            <StartButton callBack={startGame} />
+          </div>
+        </div>
         <aside className='side-container'>
           {gameOver ? (
             <Display gameOver={gameOver} text='GameOver' />
@@ -151,7 +161,6 @@ const Tetris = () => {
               <Display text={`Level: ${level}`} />
             </div>
           )}
-          <StartButton callBack={startGame} />
         </aside>
       </StyledTetris>
     </StyledTetrisWrapper>

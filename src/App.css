@@ -19,15 +19,32 @@ body {
 }
 
 .side-container {
-  /* display: none; */
+  display: none;
   background-color: rgba(255, 255, 255, 0.5);
   margin: 0 0 0 0;
   height: 40rem;
   margin: auto auto;
   min-width: 40rem;
-  border-radius: 2rem;
+  border-radius: 1rem;
 }
 
+.tetris-container {
+  margin: 0 auto;
+  width: 47rem;
+  background-color: #3e4444;
+  border-radius: 2em;
+}
+
+.tetris-header {
+  height: 6rem;
+}
+.tetris-columns {
+  display: flex;
+}
+
+.tetris-footer {
+  padding: 0.4rem 0;
+}
 .glass {
   box-sizing: border-box;
   width: 90%;
