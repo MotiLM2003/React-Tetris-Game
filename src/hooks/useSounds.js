@@ -15,9 +15,7 @@ export const useSounds = () => {
     if (currentAudio != null) {
       gameAudio[currentAudio].loop = loop;
     }
-  }, [loop]);
-
-  const test = () => {};
+  }, [loop]); 
 
   const playSound = (audio, isLoop, volume = 1) => {
     setCurrentAudio(audio);
