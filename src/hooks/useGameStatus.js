@@ -9,6 +9,7 @@ export const useGameStatus = (rowsCleared) => {
 
   const calcScore = useCallback(() => {
     if (rowsCleared > 0) {
+      console.log('CAL');
       // score formula  (original tetris?)
       setScore((prev) => prev + linePoints[rowsCleared - 1] * level);
       setRows((prev) => prev + rowsCleared);
@@ -16,8 +17,9 @@ export const useGameStatus = (rowsCleared) => {
   }, [level, linePoints, rowsCleared]);
 
   useEffect(() => {
-    calcScore();
-  }, [calcScore, rowsCleared, score]);
+    console.log(`score : ${score}, rows: ${rows}, level: ${level}`);
+    //  calcScore();
+  }, []);
 
   return [score, setScore, rows, setRows, level, setLevel];
 };

@@ -10,12 +10,13 @@ export const useSounds = () => {
     nextLevel: new Audio('/sounds/game-over.mp3'),
   });
   const [currentAudio, setCurrentAudio] = useState(null);
-  useEffect(() => {});
+
   useEffect(() => {
+    console.log(' use effect teteris');
     if (currentAudio != null) {
       gameAudio[currentAudio].loop = loop;
     }
-  }, [loop]); 
+  }, [loop]);
 
   const playSound = (audio, isLoop, volume = 1) => {
     setCurrentAudio(audio);
