@@ -1,5 +1,5 @@
 import { isValidElement, useEffect, useState } from 'react';
-
+import { useInterval } from '../hooks/useInterval';
 export const useSounds = () => {
   const [loop, setLoop] = useState(false);
   const [gameAudio] = useState({
@@ -36,7 +36,7 @@ export const useSounds = () => {
   const setVolume = (volume) => {
     if (currentAudio !== null) {
       let currentValue = gameAudio[currentAudio].volume;
-      const reduceValueInterval = setInterval(() => {
+      const reduceValueInterval = useInterval(() => {
         currentValue -= 0.1;
         gameAudio[currentAudio].volume = currentValue;
 
