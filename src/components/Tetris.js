@@ -31,7 +31,7 @@ const Tetris = () => {
   const getDropIntervalTime = () => 1000 / level + 200;
 
   useEffect(() => {
-    document.getElementById('main-area').click();
+    console.log('loading');
     playSound('title', true, 0.4);
   }, []);
 
