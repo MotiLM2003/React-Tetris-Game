@@ -18,8 +18,8 @@ export const useGameStatus = (rowsCleared) => {
 
   useEffect(() => {
     console.log(`score : ${score}, rows: ${rows}, level: ${level}`);
-    //  calcScore();
-  }, []);
+    calcScore();
+  }, [setRows, calcScore]);
 
   return [score, setScore, rows, setRows, level, setLevel];
 };
