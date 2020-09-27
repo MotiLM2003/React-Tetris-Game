@@ -144,7 +144,11 @@ const Tetris = () => {
           <div className='tetris-columns'>
             <div>side a</div>
             <Stage stage={stage} />
-            <div>side b</div>
+            <div class='game-status-data'>
+              <Display header={'Score'} text={score} />
+              <Display header={'Rows'} text={rows} />
+              <Display header={'Level'} text={level} />
+            </div>
           </div>
           <div className='tetris-footer'>
             <StartButton callBack={startGame} />

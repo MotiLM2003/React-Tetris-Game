@@ -16,8 +16,14 @@ export const useGameStatus = (rowsCleared) => {
   }, [level, linePoints, rowsCleared]);
 
   useEffect(() => {
+<<<<<<< HEAD
     calcScore();
   }, []);
+=======
+    console.log(`score : ${score}, rows: ${rows}, level: ${level}`);
+    calcScore();
+  }, [setRows, calcScore]);
+>>>>>>> game-ui
 
   return [score, setScore, rows, setRows, level, setLevel];
 };
