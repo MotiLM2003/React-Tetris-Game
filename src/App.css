@@ -19,7 +19,7 @@ body {
 }
 
 .side-container {
-  display: none;
+  /* display: none; */
   background-color: rgba(255, 255, 255, 0.5);
   margin: 0 0 0 0;
   height: 40rem;
