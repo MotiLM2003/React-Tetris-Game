@@ -24,7 +24,6 @@ export const useStage = (player, resetPlayer) => {
         return acc;
       }, []);
       if (clearedRowCount > 0) {
-        console.log('clear row sound');
         playSound('clearRow');
       }
       return tempStage;

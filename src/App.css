@@ -32,9 +32,9 @@ body {
 
 .tetris-container {
   margin: 0 auto;
-  width: 47rem;
-  background-color: #3e4444;
-  border-radius: 2em;
+  width: 55rem;
+  background-color: #2c3030;
+  border-radius: 1rem;
 }
 
 .tetris-header {

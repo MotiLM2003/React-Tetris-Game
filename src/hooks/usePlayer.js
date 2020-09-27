@@ -53,9 +53,7 @@ export const usePlayer = () => {
     }));
   };
 
-  useEffect(() => {
-    console.log(' use effect playre');
-  }, player.pos.y);
+  useEffect(() => {}, player.pos.y);
   const resetPlayer = useCallback(() => {
     setPlayer({
       pos: { x: STAGE_WIDTH / 2 - 1, y: 0 },

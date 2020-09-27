@@ -1,6 +1,6 @@
 import { isValidElement, useEffect, useState } from 'react';
 import { useInterval } from '../hooks/useInterval';
-export const useSounds = () => {
+export const useSounds = (Intital) => {
   const [loop, setLoop] = useState(false);
   const [gameAudio, setGameAudio] = useState({});
   const [currentAudio, setCurrentAudio] = useState(null);
@@ -15,17 +15,20 @@ export const useSounds = () => {
     });
   }, []);
   useEffect(() => {
-    console.log(' use effect teteris');
-
     if (currentAudio != null) {
       gameAudio[currentAudio].loop = loop;
     }
   }, [loop]);
 
+  useEffect(() => {
+    gameAudio[currentAudio].play();
+  }, [currentAudio]);
+
   const playSound = (audio, isLoop, volume = 1) => {
     setVolume(volume);
     setCurrentAudio(audio);
     setLoop(isLoop);
+    console.log(gameAudio[audio]);
     if (!gameAudio[audio]) return;
     gameAudio[audio].volume = volume;
     gameAudio[audio].pause();
