@@ -13,5 +13,5 @@ export const StyledStage = styled.div`
   margin: 0 auto;
   max-width: 25vw;
   background: #111;
-  margin: 2remawdsawadwddawda auto;
+  margin: 2rem auto;
 `;

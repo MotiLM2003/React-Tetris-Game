@@ -154,17 +154,6 @@ const Tetris = () => {
             <StartButton callBack={startGame} />
           </div>
         </div>
-        <aside className='side-container'>
-          {gameOver ? (
-            <Display gameOver={gameOver} text='GameOver' />
-          ) : (
-            <div>
-              <Display text={`Score: ${score}`} />
-              <Display text={`Rows: ${rows}`} />
-              <Display text={`Level: ${level}`} />
-            </div>
-          )}
-        </aside>
       </StyledTetris>
     </StyledTetrisWrapper>
   );

@@ -4,6 +4,7 @@ const StartButton = ({ callBack }) => {
   return (
     <button
       onClick={(e) => {
+        //unfocus the start button.
         document.getElementById('main-area').focus();
         callBack();
       }}
