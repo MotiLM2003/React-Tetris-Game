@@ -21,6 +21,9 @@ export const useSounds = (Intital) => {
   }, [loop]);
 
   useEffect(() => {
+    if (!gameAudio[currentAudio]) {
+      return;
+    }
     gameAudio[currentAudio].play();
   }, [currentAudio]);
 
