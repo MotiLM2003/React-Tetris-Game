@@ -3,10 +3,9 @@ import React from 'react';
 import { StyledCell } from './styles/StyledCell';
 import { TETROMINOS } from '../tetrominos';
 const Cell = ({ type }) => {
-  console.log('type', type);
   return (
     <div
-      className={`cell-${type}`}
+      className={`cell cell-${type}`}
       type={type}
       color={TETROMINOS[type].color}
     ></div>

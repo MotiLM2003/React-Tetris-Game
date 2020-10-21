@@ -138,17 +138,23 @@ const Tetris = () => {
       onKeyUp={(e) => keyUp(e)}
     >
       <div className='bg-blur'>&nbsp;</div>
+      <div className='tetris-header-container'>
+        <div className='tetris-header'>
+          <div>
+            <Display header={'Score'} text={score} />
+          </div>
+          <div>
+            <Display header={'Rows'} text={rows} />
+          </div>
+          <div>
+            <Display header={'Level'} text={level} />
+          </div>
+        </div>
+      </div>
       <StyledTetris>
         <div className='tetris-container'>
-          <div className='tetris-header'>header</div>
           <div className='tetris-columns'>
-            <div>side a</div>
             <Stage stage={stage} />
-            <div class='game-status-data'>
-              <Display header={'Score'} text={score} />
-              <Display header={'Rows'} text={rows} />
-              <Display header={'Level'} text={level} />
-            </div>
           </div>
           <div className='tetris-footer'>
             <StartButton callBack={startGame} />
