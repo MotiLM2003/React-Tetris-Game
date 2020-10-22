@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
-import { createStage } from '../gameHelpers';
+import { createStage, createHomePage } from '../gameHelpers';
 import { usePlayer } from './usePlayer';
 import { useSounds } from './useSounds';
 
 export const useStage = (player, resetPlayer) => {
-  const [stage, setStage] = useState(createStage());
+  const [stage, setStage] = useState(createHomePage());
   const [rowsCleared, setRowsCleared] = useState(0);
-  const [playSound, stopSound, setLoop] = useSounds();
+  const [playSound] = useSounds();
   useEffect(() => {
     setRowsCleared(0);
     const sweepRows = (newStage) => {
