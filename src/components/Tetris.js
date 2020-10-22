@@ -149,12 +149,15 @@ const Tetris = () => {
           <div>
             <Display header={'Level'} text={level} />
           </div>
+          <div class='box-display'>
+            <div>next</div>
+          </div>
         </div>
       </div>
       <StyledTetris>
         <div className='tetris-container'>
           <div className='tetris-columns'>
-            <Stage stage={stage} />
+            <Stage stage={stage} gameOver={gameOver} />
           </div>
           <div className='tetris-footer'>
             <StartButton callBack={startGame} />

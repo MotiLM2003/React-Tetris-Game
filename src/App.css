@@ -42,6 +42,37 @@ body {
   border-radius: 1rem;
 }
 
+.gameover-container {
+  position: absolute;
+  width: inherit;
+  top: 0;
+  opacity: 1;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 1s ease-in-out;
+}
+
+.hide-gameover {
+  opacity: 0;
+  display: none;
+}
+.gameover-container > div {
+  font-size: 7rem;
+  font-family: Pixel;
+  background-image: linear-gradient(
+    to right,
+    rgba(248, 80, 50, 1) 0%,
+    rgba(241, 111, 92, 1) 50%,
+    rgba(246, 41, 12, 1) 51%,
+    rgba(240, 47, 23, 1) 71%,
+    rgba(231, 56, 39, 1) 100%
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 .tetris-columns {
   display: flex;
 }
@@ -63,6 +94,7 @@ body {
   grid-row: 1;
   background: #111;
   margin: 2rem auto;
+  position: relative;
 }
 
 .glass {
@@ -113,25 +145,64 @@ body {
   background-color: rgba(0, 0, 0, 1);
 }
 .cell-I {
-  background-color: rgba(80, 227, 230, 0.8);
+  /* background-color: rgba(80, 227, 230, 0.8); */
+  background-image: linear-gradient(
+    to right,
+    rgba(183, 222, 237, 1) 0%,
+    rgba(113, 206, 239, 1) 50%,
+    rgba(33, 180, 226, 1) 51%,
+    rgba(183, 222, 237, 1) 100%
+  );
 }
 .cell-J {
-  background-color: rgba(36, 95, 223, 0.8);
+  background: linear-gradient(
+    to right,
+    rgba(73, 156, 234, 1) 0%,
+    rgba(159, 193, 224, 1) 49%,
+    rgba(32, 124, 229, 1) 100%
+  );
 }
 .cell-L {
-  background-color: rgba(223, 173, 36, 0.8);
+  background: linear-gradient(
+    to right,
+    rgba(255, 175, 75, 1) 0%,
+    rgba(255, 235, 10, 1) 50%,
+    rgba(255, 146, 10, 1) 98%,
+    rgba(255, 146, 10, 1) 100%
+  );
 }
 .cell-O {
-  background-color: rgba(223, 217, 36, 0.8);
+  background: linear-gradient(
+    to right,
+    rgba(241, 231, 103, 1) 0%,
+    rgba(254, 182, 69, 1) 100%
+  );
 }
 .cell-S {
-  background-color: rgba(48, 211, 56, 0.8);
+  background: linear-gradient(
+    to right,
+    rgba(210, 255, 82, 1) 0%,
+    rgba(145, 232, 66, 1) 100%
+  );
 }
 .cell-T {
-  background-color: rgba(132, 61, 198);
+  background: linear-gradient(
+    to right,
+    rgba(203, 96, 179, 1) 0%,
+    rgba(193, 70, 161, 1) 50%,
+    rgba(168, 0, 119, 1) 51%,
+    rgba(219, 54, 164, 1) 100%
+  );
 }
 .cell-Z {
-  background-color: rgba(227, 78, 78);
+  background: linear-gradient(
+    to right,
+    rgba(248, 80, 50, 1) 0%,
+    rgba(241, 111, 92, 1) 50%,
+    rgba(246, 41, 12, 1) 51%,
+    rgba(240, 47, 23, 1) 71%,
+    rgba(231, 56, 39, 1) 100%
+  );
 }
 
 @media screen and (max-height: 832px) {
